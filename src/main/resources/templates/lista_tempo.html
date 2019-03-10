@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Previsão do tempo</title>
+    <meta name="viewport" content="width=device-width"/>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+          rel="stylesheet"/>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+          rel="stylesheet"/>
+</head>
+<body>
+<div class="panel panel-default" style="margin: 10px">
+    <div class="panel-heading">
+        <h1 class="panel-title">Previsão do tempo</h1>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nome do dia na semana</th>
+                <th>Temperatura mínima</th>
+                <th>Temperatura máxima</th>
+                <th>humidade relativa do ar</th>
+                <th>Descrição</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="periodo : ${periodos}">
+                <td th:text="${periodo.diaDaSemana}"></td>
+                <td th:text="${periodo.temperaturaMin}"></td>
+                <td th:text="${periodo.temperaturaMax}"></td>
+                <td th:text="${periodo.humidade}"></td>
+                <td th:text="${periodo.discricao}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
