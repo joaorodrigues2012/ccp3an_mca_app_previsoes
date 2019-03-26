@@ -2,6 +2,7 @@ package br.usjt.previsao_tempo.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 
@@ -12,13 +13,17 @@ public class Periodo implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String diaDaSemana;
     private Double temperaturaMin;
     private Double temperaturaMax;
     private Double humidade;
+    private String dataHora;
+    private Double latitude;
+    private Double longitude;
     private String discricao;
+
 
 
     public Long getId() {
@@ -67,6 +72,30 @@ public class Periodo implements Serializable {
 
     public void setDiscricao(String discricao) {
         this.discricao = discricao;
+    }
+
+    public String getDataHora() {
+        return dataHora;
+    }
+
+    public void setDataHora(String dataHora) {
+        this.dataHora = dataHora;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 
     @Override

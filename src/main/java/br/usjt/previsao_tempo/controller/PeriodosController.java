@@ -2,6 +2,7 @@ package br.usjt.previsao_tempo.controller;
 
 import br.usjt.previsao_tempo.model.Periodo;
 import br.usjt.previsao_tempo.repository.PeriodosRepository;
+import br.usjt.previsao_tempo.service.PeridosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,21 +13,34 @@ import java.util.List;
 @Controller
 public class PeriodosController {
 
+//    @Autowired
+//    private PeriodosRepository repository;
+
+//    @Autowired
+//    public PeriodosController(PeriodosRepository repository) {
+//        this.repository = repository;
+//    }
+//
+//    @Autowired
+//    public void setRepository(PeriodosRepository repository){
+//        this.repository = repository;
+//    }
+
     @Autowired
-    private PeriodosRepository repository;
+    private PeridosService peridosService;
 
     @GetMapping("/tempo")
     public ModelAndView listarPeriodos() {
         ModelAndView mv = new ModelAndView("lista_tempo");
-
-        List<Periodo> periodos = repository.findAll();
-        mv.addObject("periodos", periodos);
         mv.addObject(new Periodo());
-        return mv;
+        //List<Periodo> periodos = repository.findAll();
+        List<Periodo> periodos = peridosService.listarTodos();
+        mv.addObject("periodos", periodos);
+       return mv;
     }
 
-public String Salvar(Periodo periodo){
-        repository.save(periodo);
+    public String Salvar(Periodo periodo) {
+        peridosService.salvar(periodo);
         return "redirect:/tempo";
-}
+    }
 }

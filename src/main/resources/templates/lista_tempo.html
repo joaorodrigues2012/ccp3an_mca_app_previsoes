@@ -22,6 +22,9 @@
                 <th>Temperatura mínima</th>
                 <th>Temperatura máxima</th>
                 <th>humidade relativa do ar</th>
+                <th>Data e Hora</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
                 <th>Descrição</th>
             </tr>
             </thead>
@@ -31,6 +34,9 @@
                 <td th:text="${periodo.temperaturaMin}"></td>
                 <td th:text="${periodo.temperaturaMax}"></td>
                 <td th:text="${periodo.humidade}"></td>
+                <td th:text="${periodo.dataHora}"></td>
+                <td th:text="${periodo.latitude}"></td>
+                <td th:text="${periodo.longitude}"></td>
                 <td th:text="${periodo.discricao}"></td>
             </tr>
             </tbody>
