@@ -30,7 +30,7 @@
             </thead>
             <tbody>
             <tr th:each="periodo : ${periodos}">
-                <td th:text="${periodo.diaDaSemana}"></td>
+                <td th:text="${periodo.diaSemana.getDia()}"></td>
                 <td th:text="${periodo.temperaturaMin}"></td>
                 <td th:text="${periodo.temperaturaMax}"></td>
                 <td th:text="${periodo.humidade}"></td>

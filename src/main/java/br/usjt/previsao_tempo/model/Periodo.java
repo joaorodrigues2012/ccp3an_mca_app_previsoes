@@ -1,30 +1,47 @@
 package br.usjt.previsao_tempo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "tb_periodo")
 public class Periodo implements Serializable {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_periodo")
     private Long id;
-    private String diaDaSemana;
+    //    @Column(name = "dia_periodo")
+//    private String diaDaSemana;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(nullable = false, name = "id_semana", foreignKey = @ForeignKey(name = "FK_tb_periodo_tb_semana"))
+    private DiaSemana diaSemana;
+    @Column(name = "tempmin_periodo")
     private Double temperaturaMin;
+    @Column(name = "tempmax_periodo")
     private Double temperaturaMax;
+    @Column(name = "humidade_periodo")
     private Double humidade;
+    @Column(name = "datahora_periodo")
     private String dataHora;
+    @Column(name = "lat_periodo")
     private Double latitude;
+    @Column(name = "lon_periodo")
     private Double longitude;
+    @Column(name = "desc_periodo")
     private String discricao;
 
 
+    public DiaSemana getDiaSemana() {
+        return diaSemana;
+    }
+
+    public void setDiaSemana(DiaSemana diaSemana) {
+        this.diaSemana = diaSemana;
+    }
 
     public Long getId() {
         return id;
@@ -34,13 +51,13 @@ public class Periodo implements Serializable {
         this.id = id;
     }
 
-    public String getDiaDaSemana() {
-        return diaDaSemana;
-    }
-
-    public void setDiaDaSemana(String diaDaSemana) {
-        this.diaDaSemana = diaDaSemana;
-    }
+//    public String getDiaDaSemana() {
+//        return diaDaSemana;
+//    }
+//
+//    public void setDiaDaSemana(String diaDaSemana) {
+//        this.diaDaSemana = diaDaSemana;
+//    }
 
     public Double getTemperaturaMin() {
         return temperaturaMin;
@@ -100,9 +117,9 @@ public class Periodo implements Serializable {
 
     @Override
     public String toString() {
-        return getDiaDaSemana() + " "
-                + "Temperatura minima: "+getTemperaturaMin() + "ºC "
-                + "Temperatura maxima: "+getTemperaturaMax() + "ºC "
-                + "Humidade: "+getHumidade()+"%";
+        return diaSemana.getDia() + " "
+                + "Temperatura minima: " + getTemperaturaMin() + "ºC "
+                + "Temperatura maxima: " + getTemperaturaMax() + "ºC "
+                + "Humidade: " + getHumidade() + "%";
     }
 }
