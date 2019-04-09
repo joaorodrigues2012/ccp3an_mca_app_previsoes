@@ -34,6 +34,10 @@ public class Periodo implements Serializable {
     @Column(name = "desc_periodo")
     private String discricao;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(nullable = false,name = "id_cidade",foreignKey = @ForeignKey(name = "FK_tb_periodo_tb_cidade"))
+    private Cidade cidade;
+
 
     public DiaSemana getDiaSemana() {
         return diaSemana;
