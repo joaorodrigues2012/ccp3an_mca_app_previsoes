@@ -8,6 +8,10 @@
           rel="stylesheet"/>
     <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
           rel="stylesheet"/>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
 </head>
 <body>
 <div class="panel panel-default" style="margin: 10px">
@@ -18,6 +22,7 @@
         <table class="table">
             <thead>
             <tr>
+                <th>Cidade</th>
                 <th>Nome do dia na semana</th>
                 <th>Temperatura mínima</th>
                 <th>Temperatura máxima</th>
@@ -30,18 +35,21 @@
             </thead>
             <tbody>
             <tr th:each="periodo : ${periodos}">
+                <td th:text="${periodo.cidade.nome}"></td>
                 <td th:text="${periodo.diaSemana.getDia()}"></td>
                 <td th:text="${periodo.temperaturaMin}"></td>
                 <td th:text="${periodo.temperaturaMax}"></td>
                 <td th:text="${periodo.humidade}"></td>
                 <td th:text="${periodo.dataHora}"></td>
-                <td th:text="${periodo.latitude}"></td>
-                <td th:text="${periodo.longitude}"></td>
+                <td th:text="${periodo.cidade.latitude}"></td>
+                <td th:text="${periodo.cidade.longitude}"></td>
                 <td th:text="${periodo.discricao}"></td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>

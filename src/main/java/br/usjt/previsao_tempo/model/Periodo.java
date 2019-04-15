@@ -27,10 +27,6 @@ public class Periodo implements Serializable {
     private Double humidade;
     @Column(name = "datahora_periodo")
     private String dataHora;
-    @Column(name = "lat_periodo")
-    private Double latitude;
-    @Column(name = "lon_periodo")
-    private Double longitude;
     @Column(name = "desc_periodo")
     private String discricao;
 
@@ -38,6 +34,14 @@ public class Periodo implements Serializable {
     @JoinColumn(nullable = false,name = "id_cidade",foreignKey = @ForeignKey(name = "FK_tb_periodo_tb_cidade"))
     private Cidade cidade;
 
+
+    public Cidade getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
+    }
 
     public DiaSemana getDiaSemana() {
         return diaSemana;
@@ -103,21 +107,6 @@ public class Periodo implements Serializable {
         this.dataHora = dataHora;
     }
 
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
 
     @Override
     public String toString() {
