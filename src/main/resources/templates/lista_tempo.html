@@ -17,6 +17,9 @@
 <div class="panel panel-default" style="margin: 10px">
     <div class="panel-heading">
         <h1 class="panel-title">Previsão do tempo</h1>
+        <form action="/tempo" method="post">
+            <input type="submit" value="Buscar Todos">
+        </form>
     </div>
     <div class="panel-body">
         <table class="table">
@@ -49,6 +52,16 @@
         </table>
     </div>
 </div>
+<form action="/buscarCidade" method="post">
+    <input type="text" name="nome" placeholder="Buscar Cidade">
+    <input type="submit">
+</form>
+<br><br>
+<form action="/buscarLateLon" method="post">
+    <input type="text" name="lat" placeholder="Buscar latitude">
+    <input type="text" name="lon" placeholder="Buscar longitude">
+    <input type="submit">
+</form>
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>

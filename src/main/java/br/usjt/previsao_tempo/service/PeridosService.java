@@ -21,4 +21,12 @@ public class PeridosService {
         return repository.findAll();
     }
 
+    public List<Periodo> buscarCidade(String nome){
+        return repository.findAllByCidade_Nome(nome);
+    }
+
+    public List<Periodo> buscarLateLon(Double lat, Double lon){
+        return repository.findAllByCidade_LatitudeAndCidade_Longitude(lat,lon);
+    }
+
 }

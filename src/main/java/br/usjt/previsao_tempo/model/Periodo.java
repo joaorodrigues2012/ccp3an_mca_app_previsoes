@@ -19,6 +19,7 @@ public class Periodo implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(nullable = false, name = "id_semana", foreignKey = @ForeignKey(name = "FK_tb_periodo_tb_semana"))
     private DiaSemana diaSemana;
+
     @Column(name = "tempmin_periodo")
     private Double temperaturaMin;
     @Column(name = "tempmax_periodo")
