@@ -22,7 +22,7 @@ public class PeridosService {
     }
 
     public List<Periodo> buscarCidade(String nome){
-        return repository.findAllByCidade_Nome(nome);
+        return repository.findAllByCidade_NomeIgnoreCase(nome);
     }
 
     public List<Periodo> buscarLateLon(Double lat, Double lon){

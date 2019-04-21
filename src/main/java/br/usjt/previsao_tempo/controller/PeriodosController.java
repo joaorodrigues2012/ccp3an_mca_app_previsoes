@@ -50,8 +50,8 @@ public class PeriodosController {
         ModelAndView mv = new ModelAndView("lista_tempo");
         mv.addObject(new Periodo());
         //List<Periodo> periodos = repository.findAll();
-        List<Periodo> periodos = peridosService.buscarCidade(nome);
-        mv.addObject("periodos", periodos);
+            List<Periodo> periodos = peridosService.buscarCidade(nome);
+            mv.addObject("periodos", periodos);
         return mv;
     }
 

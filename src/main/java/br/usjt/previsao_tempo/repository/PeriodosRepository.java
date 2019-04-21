@@ -11,4 +11,6 @@ public interface PeriodosRepository extends JpaRepository<Periodo,Long> {
 
      List<Periodo> findAllByCidade_LatitudeAndCidade_Longitude(Double lat, Double lon);
 
+     List<Periodo> findAllByCidade_NomeIgnoreCase(String nome);
+
 }
