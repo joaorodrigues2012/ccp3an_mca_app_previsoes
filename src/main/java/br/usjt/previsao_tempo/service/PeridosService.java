@@ -1,11 +1,13 @@
 package br.usjt.previsao_tempo.service;
 
+import br.usjt.previsao_tempo.model.Cidade;
 import br.usjt.previsao_tempo.model.Periodo;
 import br.usjt.previsao_tempo.repository.PeriodosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.Future;
 
 @Service
 public class PeridosService {
@@ -21,11 +23,11 @@ public class PeridosService {
         return repository.findAll();
     }
 
-    public List<Periodo> buscarCidade(String nome){
+    public Future<List<Periodo>> buscarCidade(String nome){
         return repository.findAllByCidade_NomeIgnoreCase(nome);
     }
 
-    public List<Periodo> buscarLateLon(Double lat, Double lon){
+    public Future<List<Periodo>> buscarLateLon(Double lat, Double lon){
         return repository.findAllByCidade_LatitudeAndCidade_Longitude(lat,lon);
     }
 

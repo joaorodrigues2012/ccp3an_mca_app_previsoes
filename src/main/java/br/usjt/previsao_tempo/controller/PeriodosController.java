@@ -1,5 +1,6 @@
 package br.usjt.previsao_tempo.controller;
 
+import br.usjt.previsao_tempo.model.Cidade;
 import br.usjt.previsao_tempo.model.Periodo;
 import br.usjt.previsao_tempo.repository.PeriodosRepository;
 import br.usjt.previsao_tempo.service.PeridosService;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.concurrent.Future;
 
 @Controller
 public class PeriodosController {
@@ -50,7 +52,7 @@ public class PeriodosController {
         ModelAndView mv = new ModelAndView("lista_tempo");
         mv.addObject(new Periodo());
         //List<Periodo> periodos = repository.findAll();
-            List<Periodo> periodos = peridosService.buscarCidade(nome);
+            Future<List<Periodo>> periodos = peridosService.buscarCidade(nome);
             mv.addObject("periodos", periodos);
         return mv;
     }
@@ -60,7 +62,7 @@ public class PeriodosController {
         ModelAndView mv = new ModelAndView("lista_tempo");
         mv.addObject(new Periodo());
         //List<Periodo> periodos = repository.findAll();
-        List<Periodo> periodos = peridosService.buscarLateLon(lat,lon);
+        Future<List<Periodo>> periodos = peridosService.buscarLateLon(lat,lon);
         mv.addObject("periodos", periodos);
         return mv;
     }
