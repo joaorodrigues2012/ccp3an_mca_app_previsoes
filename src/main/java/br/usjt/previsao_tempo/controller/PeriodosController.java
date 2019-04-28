@@ -52,8 +52,9 @@ public class PeriodosController {
         ModelAndView mv = new ModelAndView("lista_tempo");
         mv.addObject(new Periodo());
         //List<Periodo> periodos = repository.findAll();
-            Future<List<Periodo>> periodos = peridosService.buscarCidade(nome);
-            mv.addObject("periodos", periodos);
+           List<Periodo> periodos = peridosService.buscarCidade(nome);
+        //Future<List<Periodo>> periodos = peridosService.buscarCidade(nome);
+        mv.addObject("periodos", periodos);
         return mv;
     }
 
@@ -61,8 +62,8 @@ public class PeriodosController {
     public ModelAndView buscarLateLon(Double lat, Double lon){
         ModelAndView mv = new ModelAndView("lista_tempo");
         mv.addObject(new Periodo());
-        //List<Periodo> periodos = repository.findAll();
-        Future<List<Periodo>> periodos = peridosService.buscarLateLon(lat,lon);
+        List<Periodo> periodos = peridosService.buscarLateLon(lat,lon);
+        //Future<List<Periodo>> periodos = peridosService.buscarLateLon(lat,lon);
         mv.addObject("periodos", periodos);
         return mv;
     }

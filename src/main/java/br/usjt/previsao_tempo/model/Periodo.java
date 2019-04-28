@@ -5,6 +5,10 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "tb_periodo")
+@NamedQuery(query = "select p from Periodo p inner join p.cidade c where c.id = p.id and upper(c.nome) = upper(:nome)",
+        name = "Periodo.BuscaPeloCidadeNome")
+@NamedQuery(query = "select p from Periodo p inner join p.cidade c where c.id = p.id and c.latitude = :latitude and c.longitude = :longitude",
+        name = "Periodo.BuscaPeloLatELon")
 public class Periodo implements Serializable {
     /**
      *
@@ -32,7 +36,7 @@ public class Periodo implements Serializable {
     private String discricao;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(nullable = false,name = "id_cidade",foreignKey = @ForeignKey(name = "FK_tb_periodo_tb_cidade"))
+    @JoinColumn(nullable = false, name = "id_cidade", foreignKey = @ForeignKey(name = "FK_tb_periodo_tb_cidade"))
     private Cidade cidade;
 
 
